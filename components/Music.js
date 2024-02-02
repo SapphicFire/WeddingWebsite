@@ -90,7 +90,7 @@ export default function Music({name, invite}) {
 
 export async function sendRSVP(payload){
   // Send RSVP object
-  const res = await fetch(`https://dev86546.service-now.com/api/x_688586_wedding/handle_song_suggestion`,{
+  const res = await fetch(`https://astrid.service-now.com/api/x_688586_wedding/handle_song_suggestion`,{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

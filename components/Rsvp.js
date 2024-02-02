@@ -162,7 +162,7 @@ export default function Rsvp({name, invite, rsvp, seatNames = [], rsvped = [], t
 
 export async function sendRSVP(payload){
   // Send RSVP object
-  const res = await fetch(`https://dev86546.service-now.com/api/x_688586_wedding/handle_rsvp`,{
+  const res = await fetch(`https://astrid.service-now.com/api/x_688586_wedding/handle_rsvp`,{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
