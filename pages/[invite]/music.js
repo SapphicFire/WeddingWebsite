@@ -4,7 +4,7 @@ import invites from 'invites'
 
 import Music from 'components/Music'
 
-const Invite = ({code, domain, name}) => {
+const Invite = ({code, name}) => {
 
   return (<>
     <Head>
@@ -16,7 +16,7 @@ const Invite = ({code, domain, name}) => {
       <meta property="og:image" content="/images/coupleartwork_background.png" />
     </Head>
 
-    <Header domain={domain} code={code} selected="music" />
+    <Header code={code} selected="music" />
 
     <div className="section">
       <h2>Song suggestions!</h2>
@@ -29,7 +29,6 @@ const Invite = ({code, domain, name}) => {
 export async function getStaticProps(context) {
   const props = invites[context.params.invite]
   props.code = context.params.invite
-  props.domain = process.env.NAMESPACE
   return {props}
 }
 

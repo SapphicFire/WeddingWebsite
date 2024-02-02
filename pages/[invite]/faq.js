@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Header from 'components/Header'
 import invites from 'invites'
 
-const Invite = ({code, domain, lang}) => {
+const Invite = ({code, lang}) => {
 
   return (<>
     <Head>
@@ -14,7 +14,7 @@ const Invite = ({code, domain, lang}) => {
       <meta property="og:image" content="/images/coupleartwork_background.png" />
     </Head>
 
-    <Header domain={domain} code={code} selected="faq" />
+    <Header code={code} selected="faq" />
 
     <div className="section">
       <h2>Frequently Asked Questions</h2>
@@ -31,7 +31,6 @@ const Invite = ({code, domain, lang}) => {
 export async function getStaticProps(context) {
   const props = invites[context.params.invite]
   props.code = context.params.invite
-  props.domain = process.env.NAMESPACE
   return {props}
 }
 
