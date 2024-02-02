@@ -3,7 +3,7 @@ import Header from 'components/Header'
 import invites from 'invites'
 import Rsvp from 'components/Rsvp'
 
-const Invite = ({code, name, rsvp, seatNames, rsvped, domain, lang}) => {
+const Invite = ({code, name, rsvp, seatNames, rsvped, lang}) => {
 
   return (<>
     <Head>
@@ -15,7 +15,7 @@ const Invite = ({code, name, rsvp, seatNames, rsvped, domain, lang}) => {
       <meta property="og:image" content="/images/coupleartwork_background.png" />
     </Head>
 
-    <Header domain={domain} code={code} selected="rsvp" />
+    <Header code={code} selected="rsvp" />
 
     <div className="section">
       <Rsvp name={name} invite={code} rsvp={rsvp} seatNames={seatNames} rsvped={rsvped} />
@@ -26,7 +26,6 @@ const Invite = ({code, name, rsvp, seatNames, rsvped, domain, lang}) => {
 export async function getStaticProps(context) {
   const props = invites[context.params.invite]
   props.code = context.params.invite
-  props.domain = process.env.NAMESPACE
   return {props}
 }
 
