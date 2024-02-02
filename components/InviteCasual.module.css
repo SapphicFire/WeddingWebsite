@@ -1,0 +1,37 @@
+.invitePicture {
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  text-align: center;
+  margin: 20px auto;
+  object-fit:scale-down;
+  object-position: 60% top;
+}
+
+.inviteMessage {
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  text-align: center;
+  margin: 20px auto;
+  object-fit: contain;
+  object-position: 60% top;
+}
+
+@media screen and (min-width: 1200px) {
+  .invitePicture {
+    border-radius: 30px;
+  }
+  .inviteMessage {
+    border-radius: 30px;
+  }
+}
+
+.layout {
+  display: grid;
+  grid:
+    "content image" 1fr
+    / 60% 1fr;
+  gap: 8px;
+}
+
