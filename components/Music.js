@@ -71,6 +71,11 @@ export default function Music({name, invite}) {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
+      <p>
+      As we prepare to say "I do," we're curating the soundtrack to our special day, and we want YOUR input! We believe music is the heartbeat of any celebration, and we'd love your help in creating the perfect playlist.
+      <br /><br />
+      Whether it's a song that makes you want to hit the dance floor or a tune that holds a special place in your heart, we want to hear your suggestions. Share your favorite songs, the ones that make you smile, reminisce, or maybe even shed a tear.
+      </p>
       <label><p><strong>What song would you like to suggest?</strong></p>
         <TextareaAutosize className={styles.text}
           minRows={2}

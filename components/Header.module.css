@@ -3,6 +3,10 @@
   margin-top: 50px;
 }
 
+.navlinks {
+  width: 100%;
+}
+
 .navlinks a {
   color: #000;
   line-height: 3em;
@@ -49,8 +53,9 @@
 
 .headerPicture {
   display: block;
+  width: 100%;
   max-width: 1200px;
-  height: 200px;
+  max-height: 200px;
   text-align: center;
   margin: 20px auto;
   object-fit: contain;

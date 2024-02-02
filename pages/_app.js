@@ -32,6 +32,7 @@ export default function MyApp({ Component, pageProps }) {
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
       <meta name="theme-color" content="#ffffff" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
     <Component {...pageProps} />
   </>
