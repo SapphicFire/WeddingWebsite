@@ -40,11 +40,11 @@ export default {
     rsvped: [false,false]
   },
   mollysam: {
-    name: "Molly & Sam",
+    name: "Molly & Sam & Baby James",
     rsvp: null,
     count: 3,
     lang: 'en',
-    seatNames: ['Molly','Sam','Bub'],
+    seatNames: ['Molly','Sam','James'],
     rsvped: [false,false,false]
   },
   gerard: {
@@ -237,6 +237,14 @@ export default {
     count: 1,
     lang: 'en',
     seatNames: ['Dane'],
+    rsvped: [false]
+  },
+  briony: {
+    name: "Briony",
+    rsvp: null,
+    count: 1,
+    lang: 'en',
+    seatNames: ['Briony'],
     rsvped: [false]
   },
 }
