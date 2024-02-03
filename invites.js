@@ -240,11 +240,27 @@ export default {
     rsvped: [false]
   },
   briony: {
-    name: "Briony",
+    name: "Briony & Finn",
+    rsvp: null,
+    count: 2,
+    lang: 'en',
+    seatNames: ['Briony','Finn'],
+    rsvped: [false]
+  },
+  astrid: {
+    name: "Astrid",
     rsvp: null,
     count: 1,
     lang: 'en',
-    seatNames: ['Briony'],
+    seatNames: ['Astrid'],
+    rsvped: [false]
+  },
+  izzy: {
+    name: "Izzy",
+    rsvp: null,
+    count: 1,
+    lang: 'en',
+    seatNames: ['Izzy'],
     rsvped: [false]
   },
 }
