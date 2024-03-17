@@ -21,6 +21,7 @@ const Invite = ({code, list}) => {
       newList[idx] = !selectedList[idx]
     }
     selectedList = newList
+    console.log(selectedList)
   }
 
   let selectedList = list.map(() => {
@@ -29,6 +30,7 @@ const Invite = ({code, list}) => {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    console.log(selectedList)
     let output = list.map((item,idx) => {
       let object = {}
       object.code = item.code
