@@ -108,18 +108,11 @@ export async function submitUpdatedList(payload) {
 }
 
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const props = invites[context.params.invite]
   props.code = context.params.invite
   props.list = (await getGiftList()).result
   return {props}
-}
-
-export async function getStaticPaths() {
-  return {
-    paths: Object.keys(invites).map(i => ({params: {invite: i}})),
-    fallback: false
-  };
 }
 
 export default Invite
