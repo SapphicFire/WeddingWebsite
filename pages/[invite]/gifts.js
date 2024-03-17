@@ -16,6 +16,8 @@ const Invite = ({code, list}) => {
   }
 
   const changeList = (e, idx) => {
+    console.log(e)
+    console.log(idx)
     let newList = [...selectedList]
     if (idx != undefined) {
       newList[idx] = e.target.checked
