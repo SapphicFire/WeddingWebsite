@@ -41,10 +41,19 @@ const Invite = ({code, list}) => {
     let x = await submitUpdatedList(output)
     setTimeout(() => {
       window.location.reload()
-    }, 62000);
+    }, 10000);
+  }
+  let parsedList = convertToHTMLList(list)
+
+  let liveList;
+  const updateList = async () => {
+    liveList = (await getGiftList()).result
   }
 
-  let parsedList = convertToHTMLList(list)
+  updateList();
+  setTimeout(() => parsedList = convertToHTMLList(liveList),4000)
+
+
   let thankYouMessage = <p><b>Thank you so much!</b> Your response has been stored anonymously. If you change your mind, please feel free to reach out to one of us and we can undo the reserved value.<br/><br/>This page will reload in 60 seconds to reflect your changes.</p>
 
   return (<>
@@ -112,7 +121,7 @@ export async function getStaticProps(context) {
   const props = invites[context.params.invite]
   props.code = context.params.invite
   props.list = (await getGiftList()).result
-  return {props, revalidate: 10}
+  return {props}
 }
 
 export async function getStaticPaths() {
