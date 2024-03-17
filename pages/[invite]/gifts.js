@@ -4,7 +4,12 @@ import invites from 'invites'
 import {useState} from 'react'
 
 const Invite = ({code, list}) => {
+  let blankList = list.map(() => {
+    return false
+  })
   const [showMess,setShowMess] = useState('hidden')
+  const [selectedList,setSelectedList] = useState(blankList)
+
   const convertToHTMLList = (list) => {
     let gifts = list.map((item,idx) => <li key={idx}><label><span>{item.name}</span><input type="checkbox" value={item.code} className="attendingName" onChange={(e) => changeList(e, idx)} /></label></li>);
   
@@ -16,17 +21,13 @@ const Invite = ({code, list}) => {
   }
 
   const changeList = (e, idx) => {
-    let newList = [...selectedList]
+    let currentList = selectedList
+    let newList = [...currentList]
     if (idx != undefined) {
       newList[idx] = !selectedList[idx]
     }
-    selectedList = newList
-    console.log(selectedList)
+    setSelectedList(newList)
   }
-
-  let selectedList = list.map(() => {
-    return false
-  })
 
   const handleSubmit = async e => {
     e.preventDefault()
