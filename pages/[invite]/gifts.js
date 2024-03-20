@@ -9,6 +9,24 @@ const Invite = ({code, list}) => {
   })
   const [showMess,setShowMess] = useState('hidden')
   const [selectedList,setSelectedList] = useState(blankList)
+  const [parsedList,setParsedList] = useState(null)
+  const [firstLoad,setFirstLoad] = useState(true)
+  const [secondLoad,setSecondLoad] = useState(true)
+
+  /** Variable Declarations */
+  let liveList
+  let thankYouMessage = <p><b>Thank you so much!</b></p>
+
+  /** Variable Functions */
+
+  const changeList = (e, idx) => {
+    let currentList = selectedList
+    let newList = [...currentList]
+    if (idx != undefined) {
+      newList[idx] = !selectedList[idx]
+    }
+    setSelectedList(newList)
+  }
 
   const convertToHTMLList = (list) => {
     let gifts = list.map((item,idx) => <li key={idx}><label><span>{item.name}</span><input type="checkbox" value={item.code} className="attendingName" onChange={(e) => changeList(e, idx)} /></label></li>);
@@ -20,18 +38,8 @@ const Invite = ({code, list}) => {
     return gifts;
   }
 
-  const changeList = (e, idx) => {
-    let currentList = selectedList
-    let newList = [...currentList]
-    if (idx != undefined) {
-      newList[idx] = !selectedList[idx]
-    }
-    setSelectedList(newList)
-  }
-
   const handleSubmit = async e => {
     e.preventDefault()
-    console.log(selectedList)
     let output = list.map((item,idx) => {
       let object = {}
       object.code = item.code
@@ -43,18 +51,25 @@ const Invite = ({code, list}) => {
       window.location.reload()
     }, 10000);
   }
-  let parsedList = convertToHTMLList(list)
 
-  let liveList;
   const updateList = async () => {
     liveList = (await getGiftList()).result
   }
 
-  updateList();
-  setTimeout(() => parsedList = convertToHTMLList(liveList),4000)
+  const showInitialList = (gifts) => {
+    setParsedList(convertToHTMLList(gifts))
+  }
 
+  /** Execution */
+  if(firstLoad){
+    setFirstLoad(false)
+    showInitialList(list)
+  }
 
-  let thankYouMessage = <p><b>Thank you so much!</b> Your response has been stored anonymously. If you change your mind, please feel free to reach out to one of us and we can undo the reserved value.<br/><br/>This page will reload in 60 seconds to reflect your changes.</p>
+  if(!firstLoad && secondLoad){
+    setSecondLoad(false)
+    updateList().then(() => {setParsedList(convertToHTMLList(liveList))})
+  }
 
   return (<>
     <Head>
@@ -115,7 +130,6 @@ export async function submitUpdatedList(payload) {
   }
   return true
 }
-
 
 export async function getStaticProps(context) {
   const props = invites[context.params.invite]
